@@ -1,0 +1,23 @@
+<h1>投稿一覧</h1>
+
+<% @lists.each do |aaa| %>
+
+  <p>タイトル</p>
+  <!--変数のidに飛ぶ-->
+  <span>
+    <%#= link_to aaa.title, "/lists/#{aaa.id}" %>
+    <%#= aaa.title %>
+    <%= link_to aaa.title, list_path(aaa.id) %>
+  </span>
+
+  <h4>本文</h4>
+  <%= aaa.body %>
+
+  <h4>画像</h4>
+  <% if aaa.image.attached? %>
+    <%= image_tag aaa.image, size: "200x200" %>
+  <% else %>
+    <%= image_tag 'no_image', size: "200x200" %>
+  <% end %>
+
+<% end %>
